@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://survival-kit-1.1/models/tentClosed.glb" type="PackedScene" id=1]
+[ext_resource path="res://survival-kit-1.1/models/rockA.glb" type="PackedScene" id=2]
+[ext_resource path="res://survival-kit-1.1/models/rockFlatGrass.glb" type="PackedScene" id=3]
+[ext_resource path="res://survival-kit-1.1/models/rockFlat.glb" type="PackedScene" id=4]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.541176, 0.67451, 0.847059, 1 )
+
+[node name="World" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16466, 2.10851 )
+script = ExtResource( 5 )
+
+[node name="Meshes" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes"]
+transform = Transform( 9.59322, 0, 0, 0, 121.376, 0, 0, 0, 12.6523, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="rockFlat" parent="Meshes" instance=ExtResource( 4 )]
+transform = Transform( 0.905576, 0, 0.424184, 0, 1, 0, -0.424184, 0, 0.905576, -0.0531663, 0, 1.93275 )
+
+[node name="rockA" parent="Meshes" instance=ExtResource( 2 )]
+transform = Transform( 0.971301, 0, -0.237855, 0, 1, 0, 0.237855, 0, 0.971301, 0, 0, 3.43506 )
+
+[node name="rockA2" parent="Meshes" instance=ExtResource( 2 )]
+transform = Transform( 0.971301, 0, -0.237855, 0, 1, 0, 0.237855, 0, 0.971301, 1.60567, 0, -2.32789 )
+
+[node name="tentClosed" parent="Meshes" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169076, 0 )
+
+[node name="rockFlatGrass" parent="Meshes" instance=ExtResource( 3 )]
+
+[node name="rockFlatGrass2" parent="Meshes" instance=ExtResource( 3 )]
+transform = Transform( 0.671863, 0, 0.740676, 0, 1, 0, -0.740676, 0, 0.671863, 1.89358, 0, 1.61434 )
+
+[node name="rockFlatGrass3" parent="Meshes" instance=ExtResource( 3 )]
+transform = Transform( 0.971301, 0, -0.237855, 0, 1, 0, 0.237855, 0, 0.971301, -2.43711, 0, 1.61434 )
