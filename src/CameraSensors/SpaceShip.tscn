@@ -21,7 +21,7 @@ transform = Transform( 1, 0, 0, 0, 0.768261, 0.640136, 0, -0.640136, 0.768261, 0
 light_energy = 2.0
 
 [node name="Zenith" type="MeshInstance" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, -0.1, 0, 0, 0 )
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 2 )
 script = ExtResource( 1 )
