@@ -25,7 +25,7 @@ To follow this tutorial you will need:
 * A mobile phone with __gyroscope__, __magnetometer__ and __accelerometer__
 * Basic math skills (trigonometry mainly)
 * Basic physics knowledge
-* Everything set up to export to [Android](https://docs.godotengine.org/es/stable/tutorials/export/exporting_for_android.html) or [iOS](https://docs.godotengine.org/es/stable/tutorials/export/exporting_for_ios.html) 
+* Everything set up to export to [Android](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html) or [iOS](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html) 
 
 ## Setting Up The Project
 
