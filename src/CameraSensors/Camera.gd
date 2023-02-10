@@ -17,16 +17,22 @@ var roll_enabled : bool = true
 onready var check_acc := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox"
 onready var check_magn := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox2"
 onready var check_gyro := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox3"
+var _on_ios = false
 
 func _ready():
 	yield(get_tree(),"idle_frame")
 	var magnet: Vector3 = Input.get_magnetometer()
-	print(magnet)
-	initial_yaw = atan2(-magnet.x, magnet.z) 
+	initial_yaw = atan2(-magnet.x, magnet.z)
+	# Caching comparsion to see if we're running on iOS
+	_on_ios = OS.get_name() == "iOS"
+	
 
 func _physics_process(delta):
 	var magnet: Vector3 = Input.get_magnetometer().rotated(-Vector3.FORWARD, rotation.z).rotated(Vector3.RIGHT, rotation.x)
 	var gravity: Vector3 = Input.get_gravity()
+	# Workaround for sensor values read different between ios and android
+	gravity = gravity if not _on_ios else  gravity * -1
+
 	var roll_acc = atan2(-gravity.x, -gravity.y) 
 	gravity = gravity.rotated(-Vector3.FORWARD, rotation.z)
 	var pitch_acc = atan2(gravity.z, -gravity.y)
@@ -37,9 +43,11 @@ func _physics_process(delta):
 	yaw = lerp_angle(yaw_magnet, yaw + gyroscope.y * delta, ky) * int(yaw_enabled)
 	roll = lerp_angle(roll_acc, roll + gyroscope.z * delta, kr) * int(roll_enabled)
 	
-	rotation = Vector3(pitch, yaw - initial_yaw, roll)
-
-
+	if _on_ios:
+		rotation = Vector3(-pitch, -yaw - initial_yaw, roll)
+	else:
+		rotation = Vector3(pitch, yaw - initial_yaw, roll)
+	
 func _on_Timer_timeout():
 	$"../CanvasLayer/PanelContainer/VBoxContainer/Label".text = "Accelerometer: %s\nMagnetometer: %s\nGyroscope: %s\n" % [var2str(Input.get_gravity()), var2str(Input.get_magnetometer()), var2str(Input.get_gyroscope())]
 
