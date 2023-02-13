@@ -25,7 +25,7 @@ To follow this tutorial you will need:
 * A mobile phone with __gyroscope__, __magnetometer__ and __accelerometer__
 * Basic math skills (trigonometry mainly)
 * Basic physics knowledge
-* Everything set up to export to [Android](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html) or [iOS](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html) 
+* [Ramatak Mobile Studio](https://ramatak.com/download/) or [Godot 3.5.1](https://downloads.tuxfamily.org/godotengine/3.5.1/) set up to export to [Android](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html)
 
 ## Setting Up The Project
 
@@ -99,7 +99,7 @@ Gyroscopes are cool sensors, but they have a problem: they tend to drift. If you
 
 ## Using The __Accelerometer__ For __Pitch__ And __Roll__
 
-The __accelerometer__ is a sensor that, measures _acceleration_ in units of $m/s^2$ (although iOS devices will likely measure it in units of $g$, with $1g \approx 9.81 m/s^2$). In a rest position, __accelerometers__ will measure the $9.81 m/s^2$ in the direction to the center of the earth caused by gravity. This makes them useful to detect the orientation of a device relative to the earth.
+The __accelerometer__ is a sensor that, measures _acceleration_ in units of $m/s^2$. In a rest position, __accelerometers__ will measure the $9.81 m/s^2$ in the direction to the center of the earth caused by gravity. This makes them useful to detect the orientation of a device relative to the earth.
 
 Godot provides two measurements with the __accelerometer__:
 
