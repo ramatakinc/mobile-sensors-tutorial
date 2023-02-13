@@ -14,9 +14,9 @@ var yaw_enabled : bool = true
 var pitch_enabled : bool = true
 var roll_enabled : bool = true
 
-onready var check_acc := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox"
-onready var check_magn := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox2"
-onready var check_gyro := $"../CanvasLayer/PanelContainer/VBoxContainer/CheckBox3"
+onready var check_acc := $"%CheckBox"
+onready var check_magn := $"%CheckBox2"
+onready var check_gyro := $"%CheckBox3"
 
 func _ready():
 	yield(get_tree(),"idle_frame")
@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
-	$"../CanvasLayer/PanelContainer/VBoxContainer/Label".text = "Accelerometer: %s\nMagnetometer: %s\nGyroscope: %s\n" % [var2str(Input.get_gravity()), var2str(Input.get_magnetometer()), var2str(Input.get_gyroscope())]
+	$"%Info".text = "Accelerometer: %s\nMagnetometer: %s\nGyroscope: %s\n" % [var2str(Input.get_gravity()), var2str(Input.get_magnetometer()), var2str(Input.get_gyroscope())]
 
 
 func _update_ks():
